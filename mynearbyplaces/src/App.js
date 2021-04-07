@@ -8,13 +8,16 @@ import {
   Route
 } from 'react-router-dom';
 
-import { HomeNavBar, HomePage, Login, LoginNavBar, Signup } from './components';
+import { HomeNavBar, HomePage, Login, LoginNavBar, Signup, Places } from './components';
 
 const App = () => {
   const [city, setCity] = useState('Tucson');
-  const [state, setState] = useState('Arizona')
+  const [state, setState] = useState('Arizona');
+  const [places, setPlaces] = useState([]);
 
   let onDataReceivedFromHome = (data) => {
+    setCity(data.city);
+    setState(data.state);
   }
   
   return (
@@ -23,6 +26,7 @@ const App = () => {
         <Route exact path="/mynearbyplaces">
           <HomeNavBar />
           <HomePage sendData={onDataReceivedFromHome} />
+          <Places places={places} />
         </Route>
         <Route exact path="/login">
           <LoginNavBar />
