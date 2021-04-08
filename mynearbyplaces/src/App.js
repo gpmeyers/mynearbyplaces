@@ -8,16 +8,75 @@ import {
   Route
 } from 'react-router-dom';
 
-import { HomeNavBar, HomePage, Login, LoginNavBar, Signup, Places } from './components';
+import { HomeNavBar, HomePage, Login, LoginNavBar, Signup, Places, AddPage } from './components';
 
 const App = () => {
-  const [city, setCity] = useState('Tucson');
-  const [state, setState] = useState('Arizona');
-  const [places, setPlaces] = useState([]);
+  const [allPlaces, setAllPlaces] = useState([]);
+  const [places, setPlaces] = useState([{
+    "name": "Canes",
+    "category": "Restaurant",
+    "city": "Tucson",
+    "state": "Arizona",
+    "reviews": []
+  }]);
 
-  let onDataReceivedFromHome = (data) => {
-    setCity(data.city);
-    setState(data.state);
+  let searchPlaces = (data) => {
+    let matches = [];
+    for(let i = 0; i < allPlaces.length; i++){
+      if(allPlaces[i].city === data.city && allPlaces[i].state === data.state){
+        matches.push(allPlaces[i]);
+      }
+    }
+
+    setPlaces(matches);
+  }
+
+  let addPlace = (data) => {
+    let list = [...allPlaces];
+    list.push(data);
+    setAllPlaces(list);
+  }
+
+  let removePlace = (data) => {
+    for(let i = 0; i < allPlaces.length; i++){
+      if(allPlaces[i].name === data.name && allPlaces[i].city === data.city && allPlaces[i].state === data.state){
+        let list = [...allPlaces];
+        list.splice(i, 1);
+        setAllPlaces(list);
+      }
+    }
+
+    for(let i = 0; i < places.length; i++){
+      if(places[i].name === data.name && places[i].city === data.city && places[i].state === data.state){
+        let list = [...places];
+        list.splice(i, 1);
+        setPlaces(list);
+      }
+    }
+  }
+
+  let addReview = (data, review) => {
+    let list = [...allPlaces];
+
+    for(let i = 0; i < list.length; i++){
+      if(list[i].name === data.name && list[i].city === data.city && list[i].state === data.state){
+        list[i].reviews.push(review);
+      }
+    }
+
+    setAllPlaces(list);
+
+    list = [...places];
+
+    for(let i = 0; i < list.length; i++){
+      if(list[i].name === data.name && list[i].city === data.city && list[i].state === data.state){
+        list[i].reviews.push(review);
+      }
+    }
+
+    setPlaces(list);
+
+    console.log(places);
   }
   
   return (
@@ -25,16 +84,21 @@ const App = () => {
       <Switch>
         <Route exact path="/mynearbyplaces">
           <HomeNavBar />
-          <HomePage sendData={onDataReceivedFromHome} />
-          <Places places={places} />
+          <HomePage sendData={searchPlaces} />
+          <AddPage sendData={addPlace} />
+          <Places places={places} remove={removePlace} addReview={addReview} />
         </Route>
-        <Route exact path="/login">
+        <Route path="/login">
           <LoginNavBar />
           <Login />
         </Route>
-        <Route exact path="/signup">
+        <Route path="/signup">
           <LoginNavBar />
           <Signup />
+        </Route>
+        <Route path="/add">
+          <LoginNavBar />
+          <AddPage sendData={addPlace} />
         </Route>
       </Switch>
     </Router>

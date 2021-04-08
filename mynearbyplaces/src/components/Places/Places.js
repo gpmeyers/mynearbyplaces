@@ -1,19 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Container, Row, Col } from 'react-bootstrap';
 
 import { Place } from '../../components';
 
-const Places = ({ places }) => {
-    if(!places.length) return <p>Nearby places will appear here!</p>
-
+const Places = ({ places, remove, addReview }) => {
     return (
         <div>
             <Container fluid>
-                {places.map((place) => (
+                {!places.length ? <p>Nearby places will appear here!</p> : places.map((place) => (
                     <Row>
                         <Col>
-                            <Place place={place} />
+                            <Place place={place} remove={remove} addReview={addReview} />
                         </Col>
                     </Row>
                 ))}

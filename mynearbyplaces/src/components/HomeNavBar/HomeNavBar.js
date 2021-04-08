@@ -10,6 +10,7 @@ const HomeNavBar = () => {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav>
                         <NavItem href="/">Write a Review</NavItem>
+                        <Nav.Link href="/add">Add a Place</Nav.Link>
                     </Nav>
                     <Nav className="ml-auto">
                         <Nav.Link href="/login">Login</Nav.Link>
