@@ -12,13 +12,7 @@ import { HomeNavBar, HomePage, Login, LoginNavBar, Signup, Places, AddPage } fro
 
 const App = () => {
   const [allPlaces, setAllPlaces] = useState([]);
-  const [places, setPlaces] = useState([{
-    "name": "Canes",
-    "category": "Restaurant",
-    "city": "Tucson",
-    "state": "Arizona",
-    "reviews": []
-  }]);
+  const [places, setPlaces] = useState([]);
 
   let searchPlaces = (data) => {
     let matches = [];
