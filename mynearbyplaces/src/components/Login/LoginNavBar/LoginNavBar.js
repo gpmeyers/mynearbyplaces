@@ -9,7 +9,7 @@ const LoginNavBar = () => {
         <div className="navStyle">
             <Navbar>
                 <Nav className="mx-auto">
-                    <Link to="/mynearbyplaces">
+                    <Link to="/">
                         <Navbar.Brand className="brand">mynearbyplaces</Navbar.Brand>
                     </Link>
                 </Nav>
