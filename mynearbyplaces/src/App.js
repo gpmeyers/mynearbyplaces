@@ -72,15 +72,6 @@ const App = () => {
 
     console.log(places);
   }
-  
-  return (
-    <div>
-      <HomeNavBar />
-      <HomePage sendData={searchPlaces} />
-      <AddPage sendData={addPlace} />
-      <Places places={places} remove={removePlace} addReview={addReview} />
-    </div>
-  );
 
   return (
     <Router>
