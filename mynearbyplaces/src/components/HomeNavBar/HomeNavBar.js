@@ -9,12 +9,20 @@ const HomeNavBar = () => {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav>
-                        <Nav.Link href="/mynearbyplaces">Write a Review</Nav.Link>
-                        <Nav.Link href="/add">Add a Place</Nav.Link>
+                        <Nav.Item className="mx-3">
+                            <Link to="/mynearbyplaces">Write a Review</Link>
+                        </Nav.Item>
+                        <Nav.Item className="mx-3">
+                            <Link to="/add">Add a Place</Link>
+                        </Nav.Item>
                     </Nav>
                     <Nav className="ml-auto">
-                        <Nav.Link href="/login">Login</Nav.Link>
-                        <Nav.Link href="/signup">Sign Up</Nav.Link>
+                        <Nav.Item className="mx-3">
+                            <Link to="/login">Login</Link>
+                        </Nav.Item>
+                        <Nav.Item className="mx-3">
+                            <Link to="/signup">Sign Up</Link>
+                        </Nav.Item>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
