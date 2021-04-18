@@ -9,7 +9,7 @@ const HomeNavBar = () => {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav>
-                        <Nav.Link href="/">Write a Review</Nav.Link>
+                        <Nav.Link href="/mynearbyplaces">Write a Review</Nav.Link>
                         <Nav.Link href="/add">Add a Place</Nav.Link>
                     </Nav>
                     <Nav className="ml-auto">

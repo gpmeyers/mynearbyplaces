@@ -76,7 +76,7 @@ const App = () => {
   return (
     <Router>
       <Switch>
-        <Route exact path="/">
+        <Route exact path="/mynearbyplaces">
           <HomeNavBar />
           <HomePage sendData={searchPlaces} />
           <AddPage sendData={addPlace} />
