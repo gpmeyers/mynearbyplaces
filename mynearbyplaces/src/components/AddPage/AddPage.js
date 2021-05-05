@@ -4,10 +4,12 @@ import api from '../../communication/api';
 
 const AddPage = () => {
 
-    let onFormSubmit = () => {
+    let onFormSubmit = (e) => {
+        e.preventDefault();
+
         let name =  document.getElementById("nameInput").value;
         let city = document.getElementById("cityInput").value
-        let state = document.getElementById("stateInput");
+        let state = document.getElementById("stateInput").value;
 
         console.log(name);
         console.log(city + ', ' + state);
@@ -15,7 +17,8 @@ const AddPage = () => {
         api.addPlace(name, city + ', ' + state);
 
         document.getElementById("nameInput").value = '';
-        document.getElementById("locationInput").value = '';
+        document.getElementById("cityInput").value = '';
+        document.getElementById("stateInput").value = '';
     }
 
     return (
