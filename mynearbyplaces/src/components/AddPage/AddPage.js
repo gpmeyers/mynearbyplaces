@@ -4,9 +4,7 @@ import api from '../../communication/api';
 
 const AddPage = () => {
 
-    let onFormSubmit = (e) => {
-        e.preventdefault();
-
+    let onFormSubmit = () => {
         let name =  document.getElementById("nameInput").value;
         let city = document.getElementById("cityInput").value
         let state = document.getElementById("stateInput");
@@ -40,7 +38,7 @@ const AddPage = () => {
                     <input id="stateInput" type="text" className="form-control" placeholder="AZ" />
                 </div>
 
-                <button type="submit" className="btn btn-primary btn-block" onClick={onFormSubmit}>Submit</button>
+                <button className="btn btn-primary btn-block" onClick={onFormSubmit}>Submit</button>
             </form>
         </div>
     );
