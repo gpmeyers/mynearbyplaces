@@ -13,15 +13,15 @@ const HomeNavBar = () => {
                             <Link to="/mynearbyplaces">Write a Review</Link>
                         </Nav.Item>
                         <Nav.Item className="mx-3">
-                            <Link to="/add">Add a Place</Link>
+                            <Link to="/mynearbyplaces/add">Add a Place</Link>
                         </Nav.Item>
                     </Nav>
                     <Nav className="ml-auto">
                         <Nav.Item className="mx-3">
-                            <Link to="/login">Login</Link>
+                            <Link to="/mynearbyplaces/login">Login</Link>
                         </Nav.Item>
                         <Nav.Item className="mx-3">
-                            <Link to="/signup">Sign Up</Link>
+                            <Link to="/mynearbyplaces/signup">Sign Up</Link>
                         </Nav.Item>
                     </Nav>
                 </Navbar.Collapse>

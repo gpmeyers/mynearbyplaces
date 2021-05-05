@@ -10,17 +10,18 @@ import {
 
 import { HomeNavBar, HomePage, Login, LoginNavBar, Signup, Places, AddPage } from './components';
 
+import api from './communication/api';
+
 const App = () => {
   const [allPlaces, setAllPlaces] = useState([]);
   const [places, setPlaces] = useState([]);
 
   let searchPlaces = (data) => {
     let matches = [];
-    for(let i = 0; i < allPlaces.length; i++){
-      if(allPlaces[i].city === data.city && allPlaces[i].state === data.state){
-        matches.push(allPlaces[i]);
-      }
-    }
+    
+    matches = api.search(data.name, data.location);
+
+    console.log(matches);
 
     setPlaces(matches);
   }
@@ -79,18 +80,17 @@ const App = () => {
         <Route exact path="/mynearbyplaces">
           <HomeNavBar />
           <HomePage sendData={searchPlaces} />
-          <AddPage sendData={addPlace} />
           <Places places={places} remove={removePlace} addReview={addReview} />
         </Route>
-        <Route path="/login">
+        <Route exact path="/mynearbyplaces/login">
           <LoginNavBar />
           <Login />
         </Route>
-        <Route path="/signup">
+        <Route exact path="/mynearbyplaces/signup">
           <LoginNavBar />
           <Signup />
         </Route>
-        <Route path="/add">
+        <Route exact path="/mynearbyplaces/add">
           <LoginNavBar />
           <AddPage sendData={addPlace} />
         </Route>

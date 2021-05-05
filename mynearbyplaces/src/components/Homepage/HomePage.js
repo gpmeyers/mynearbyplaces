@@ -5,12 +5,12 @@ const HomePage = ({ sendData }) => {
 
     let onButtonClicked = () => {
         sendData({
-            "city": document.getElementById("cityInput").value,
-            "state": document.getElementById("stateInput").value,
+            "name": document.getElementById("nameInput").value,
+            "location": document.getElementById("locationInput").value,
         });
 
-        document.getElementById("cityInput").value = '';
-        document.getElementById("stateInput").value = '';
+        document.getElementById("nameInput").value = '';
+        document.getElementById("locationInput").value = '';
     }
 
     return (
@@ -19,10 +19,10 @@ const HomePage = ({ sendData }) => {
             <Container>
                 <Row>
                     <Col xs="5">
-                        City <input id="cityInput" className="w-100" type="text" placeholder="plumbers, delivery, takeout..." />
+                        Name <input id="nameInput" className="w-100" type="text" placeholder="Place Name" />
                     </Col>
                     <Col xs="5">
-                        State <input id="stateInput" className="w-100" type="text" placeholder="Tucson, AZ" />
+                        Location <input id="locationInput" className="w-100" type="text" placeholder="Tucson, AZ" />
                     </Col>
                     <Col xs="2">
                         <Button onClick={onButtonClicked} className="w-100">Search</Button>

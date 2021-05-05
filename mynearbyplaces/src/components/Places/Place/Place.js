@@ -2,6 +2,8 @@ import React from 'react';
 
 import { Button, Container, Row, Col, InputGroup, FormControl } from 'react-bootstrap';
 
+import api from '../../../communication/api';
+
 const Place = ({ place, remove, addReview }) => {
     const handleRemove = () => {
         remove(place);
@@ -11,7 +13,7 @@ const Place = ({ place, remove, addReview }) => {
         let review = document.getElementById("review-input").value;
         console.log("Review in Place: ");
         console.log(review);
-        addReview(place, review);
+        api.addReview(place, review);
     }
 
     return (

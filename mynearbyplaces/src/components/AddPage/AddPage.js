@@ -2,26 +2,17 @@ import React, { useState } from 'react';
 
 import { Form, Row, Col, Button } from 'react-bootstrap';
 
+import api from '../../communication/api';
+
 const AddPage = ({ sendData }) => {
     const [name, setName] = useState('');
-    const [category, setCategory] = useState('');
     const [city, setCity] = useState('');
     const [state, setState] = useState('');
 
     let onFormSubmit = (event) => {
         event.preventDefault();
 
-        console.log(name);
-        console.log("state info:");
-        console.log(document.getElementById(""))
-
-        sendData({
-            'name': name,
-            'category': category,
-            'city': city,
-            'state': state,
-            'reviews': []
-        });
+        api.addPlace(name, city + ', ' + state);
     }
 
     return (
@@ -32,11 +23,6 @@ const AddPage = ({ sendData }) => {
                 <Form.Group as={Col} controlId="formGridName">
                 <Form.Label>Name</Form.Label>
                 <Form.Control placeholder="Name of establishment" onChange={(e) => {setName(e.target.value)}} />
-                </Form.Group>
-
-                <Form.Group as={Col} controlId="formGridcategory">
-                <Form.Label>Category</Form.Label>
-                <Form.Control placeholder="Restaurant, etc." onChange={(e) => {setCategory(e.target.value)}} />
                 </Form.Group>
 
                 <Form.Group as={Col} controlId="formGridCity">
