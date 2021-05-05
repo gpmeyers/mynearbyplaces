@@ -1,4 +1,4 @@
-let apiHost = 'https://gpmeyers-nearbyplaces-api.herokuapp.com/';
+let apiHost = 'https://gpmeyers-nearbyplaces-api.herokuapp.com';
 
 let addPlace = (name, location) => {
     return fetch(apiHost + '/place', {
