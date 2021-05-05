@@ -32,7 +32,8 @@ let addReview = (placeName, review) => {
 
 let search = (name, location) => {
     return fetch(apiHost + '/search/' + name + '/' + location)
-    .then(response => response.json());
+    .then(response => response.json())
+    .catch(e => {console.log('Error with search request: '); console.log(e);});
 }
 
 let api = {
