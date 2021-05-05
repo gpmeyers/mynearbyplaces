@@ -4,7 +4,7 @@ import { Button, Container, Row, Col, InputGroup, FormControl } from 'react-boot
 
 import api from '../../../communication/api';
 
-const Place = ({ place, remove, addReview }) => {
+const Place = ({ place, remove }) => {
     const handleRemove = () => {
         remove(place);
     }

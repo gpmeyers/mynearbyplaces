@@ -26,12 +26,6 @@ const App = () => {
     setPlaces(matches);
   }
 
-  let addPlace = (data) => {
-    let list = [...allPlaces];
-    list.push(data);
-    setAllPlaces(list);
-  }
-
   let removePlace = (data) => {
     for(let i = 0; i < allPlaces.length; i++){
       if(allPlaces[i].name === data.name && allPlaces[i].city === data.city && allPlaces[i].state === data.state){
@@ -50,37 +44,13 @@ const App = () => {
     }
   }
 
-  let addReview = (data, review) => {
-    let list = [...allPlaces];
-
-    for(let i = 0; i < list.length; i++){
-      if(list[i].name === data.name && list[i].city === data.city && list[i].state === data.state){
-        list[i].reviews.push(review);
-      }
-    }
-
-    setAllPlaces(list);
-
-    list = [...places];
-
-    for(let i = 0; i < list.length; i++){
-      if(list[i].name === data.name && list[i].city === data.city && list[i].state === data.state){
-        list[i].reviews.push(review);
-      }
-    }
-
-    setPlaces(list);
-
-    console.log(places);
-  }
-
   return (
     <Router>
       <Switch>
         <Route exact path="/mynearbyplaces">
           <HomeNavBar />
           <HomePage sendData={searchPlaces} />
-          <Places places={places} remove={removePlace} addReview={addReview} />
+          <Places places={places} remove={removePlace} />
         </Route>
         <Route exact path="/mynearbyplaces/login">
           <LoginNavBar />
@@ -92,7 +62,7 @@ const App = () => {
         </Route>
         <Route exact path="/mynearbyplaces/add">
           <LoginNavBar />
-          <AddPage sendData={addPlace} />
+          <AddPage />
         </Route>
       </Switch>
     </Router>

@@ -1,44 +1,47 @@
-import React, { useState } from 'react';
-
-import { Form, Row, Col, Button } from 'react-bootstrap';
+import React from 'react';
 
 import api from '../../communication/api';
 
-const AddPage = ({ sendData }) => {
-    const [name, setName] = useState('');
-    const [city, setCity] = useState('');
-    const [state, setState] = useState('');
+const AddPage = () => {
 
-    let onFormSubmit = (event) => {
-        event.preventDefault();
+    let onFormSubmit = (e) => {
+        e.preventdefault();
+
+        let name =  document.getElementById("nameInput").value;
+        let city = document.getElementById("cityInput").value
+        let state = document.getElementById("stateInput");
+
+        console.log(name);
+        console.log(city + ', ' + state);
 
         api.addPlace(name, city + ', ' + state);
+
+        document.getElementById("nameInput").value = '';
+        document.getElementById("locationInput").value = '';
     }
 
     return (
-        <div>
-            <h3>Add a Place!</h3>
+        <div className="formContainer">
+            <form>
+                <h3>Add a Place!</h3>
 
-            <Form onSubmit={onFormSubmit}>
-                <Form.Group as={Col} controlId="formGridName">
-                <Form.Label>Name</Form.Label>
-                <Form.Control placeholder="Name of establishment" onChange={(e) => {setName(e.target.value)}} />
-                </Form.Group>
+                <div className="form-group">
+                    <label>Name</label>
+                    <input id="nameInput" type="text" className="form-control" placeholder="Name of establishment" />
+                </div>
 
-                <Form.Group as={Col} controlId="formGridCity">
-                    <Form.Label>City</Form.Label>
-                    <Form.Control placeholder="Tucson" onChange={(e) => {setCity(e.target.value)}} />
-                </Form.Group>
+                <div className="form-group">
+                    <label>City</label>
+                    <input id="cityInput" type="text" className="form-control" placeholder="Tucson" />
+                </div>
 
-                <Form.Group as={Col} controlId="formGridCity">
-                    <Form.Label>State</Form.Label>
-                    <Form.Control placeholder="Arizona" onChange={(e) => {setState(e.target.value)}} />
-                </Form.Group>
+                <div className="form-group">
+                    <label>State</label>
+                    <input id="stateInput" type="text" className="form-control" placeholder="AZ" />
+                </div>
 
-                <Button variant="primary" type="submit">
-                    Submit
-                </Button>
-            </Form>
+                <button type="submit" className="btn btn-primary btn-block" onClick={onFormSubmit}>Submit</button>
+            </form>
         </div>
     );
 }
