@@ -1,5 +1,4 @@
-//let apiHost = 'https://gpmeyers-nearbyplaces-api.herokuapp.com';
-let apiHost = 'http://localhost:8080';
+let apiHost = 'https://gpmeyers-nearbyplaces-api.herokuapp.com';
 
 let addPlace = (name, location) => {
     console.log('In addPlace function in API.');
