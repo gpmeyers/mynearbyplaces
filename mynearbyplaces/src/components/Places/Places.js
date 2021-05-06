@@ -11,7 +11,7 @@ const Places = ({ places, remove }) => {
                 {!places.length ? <p>Nearby places will appear here!</p> : places.map((place) => (
                     <Row>
                         <Col>
-                            <Place place={place} remove={remove} />
+                            <Place key={place} place={place} remove={remove} />
                         </Col>
                     </Row>
                 ))}

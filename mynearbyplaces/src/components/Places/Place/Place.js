@@ -1,32 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
+import './Place.css';
 
 import { Button, Container, Row, Col, InputGroup, FormControl } from 'react-bootstrap';
 
 import api from '../../../communication/api';
 
 const Place = ({ place, remove }) => {
+    const [review, setReview] = useState('');
+
     const handleRemove = () => {
         remove(place);
     }
 
     const handleAddReview = () => {
-        let review = document.getElementById("review-input").value;
-        console.log("Review in Place: ");
-        console.log(review);
-        api.addReview(place, review);
+        api.addReview(place.name, review)
+        .then(() => console.log('The review was added successfully'))
+        .catch(e => console.log(e));
+
+        document.getElementById("review-input").value = '';
+    }
+
+    let onReviewChange = (e) => {
+        setReview(e.target.value);
     }
 
     return (
         <div>
-            <Container>
+            <Container className="placeContainer">
                 <Row>
                     <Col>
-                        <h3>{place.name}</h3>
+                        <h3 className="placeTitle">{place.name}</h3>
                     </Col>
                 </Row>
                 <Row>
                     <Col>
-                        {place.name} is a {place.category} in {place.city}, {place.state}
+                        <p className="placeDescription">{place.name} is a place located in {place.placelocation}</p>
                     </Col>
                 </Row>
                 <Row>
@@ -34,19 +42,12 @@ const Place = ({ place, remove }) => {
                 </Row>
                 <Row>
                     <Col sm={12} md={9}>
-                        <input id="review-input" type="text" />
+                        <input className="placeReviewField" id="review-input" type="text" value={review} onChange={onReviewChange} />
                     </Col>
                     <Col sm={12} md={3}>
                         <Button onClick={handleAddReview}>Add a Review</Button>
                     </Col>
                 </Row>
-                {place.reviews.map((review) => (
-                    <Row>
-                        <Col>
-                            <p>"{review}"</p>
-                        </Col>
-                    </Row>
-                ))}
             </Container>
         </div>
     );

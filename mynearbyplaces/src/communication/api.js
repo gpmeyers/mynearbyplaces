@@ -1,6 +1,11 @@
-let apiHost = 'https://gpmeyers-nearbyplaces-api.herokuapp.com';
+//let apiHost = 'https://gpmeyers-nearbyplaces-api.herokuapp.com';
+let apiHost = 'http://localhost:8080';
 
 let addPlace = (name, location) => {
+    console.log('In addPlace function in API.');
+    console.log('name: ' + name);
+    console.log('location: ' + location);
+
     return fetch(apiHost + '/place', {
         method: 'post',
         headers: {
@@ -8,7 +13,7 @@ let addPlace = (name, location) => {
         },
         body: JSON.stringify({
             name: name,
-            placeLocation: location
+            placelocation: location
         })
     });
 }

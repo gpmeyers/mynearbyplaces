@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -13,13 +13,10 @@ import { HomeNavBar, HomePage, Login, LoginNavBar, Signup, Places, AddPage } fro
 import api from './communication/api';
 
 const App = () => {
-  const [allPlaces, setAllPlaces] = useState([]);
   const [places, setPlaces] = useState([]);
 
-  let searchPlaces = (data) => {
-    let matches = [];
-    
-    matches = api.search(data.name, data.location);
+  let searchPlaces = async (data) => {
+    const matches = await api.search(data.name, data.location);
 
     console.log(matches);
 
@@ -27,22 +24,12 @@ const App = () => {
   }
 
   let removePlace = (data) => {
-    for(let i = 0; i < allPlaces.length; i++){
-      if(allPlaces[i].name === data.name && allPlaces[i].city === data.city && allPlaces[i].state === data.state){
-        let list = [...allPlaces];
-        list.splice(i, 1);
-        setAllPlaces(list);
-      }
-    }
-
-    for(let i = 0; i < places.length; i++){
-      if(places[i].name === data.name && places[i].city === data.city && places[i].state === data.state){
-        let list = [...places];
-        list.splice(i, 1);
-        setPlaces(list);
-      }
-    }
+    
   }
+
+  useEffect(() => {
+
+  });
 
   return (
     <Router>
